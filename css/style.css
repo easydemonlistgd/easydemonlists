@@ -1,0 +1,425 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        -45deg,
+        #0f172a,
+        #1e3a8a,
+        #2563eb,
+        #0f172a
+    );
+
+    background-size: 400% 400%;
+
+    color: white;
+
+    min-height: 100vh;
+
+    text-align: center;
+
+    padding: 40px;
+
+    animation:
+        backgroundMove 15s ease infinite,
+        fadeIn 1s ease;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes backgroundMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes titleDrop {
+
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes pulse {
+
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+
+}
+
+/* =========================
+   TITLES
+========================= */
+
+h1 {
+    font-size: 48px;
+
+    margin-bottom: 30px;
+
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+
+    animation: titleDrop 1s ease;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 14px 30px;
+
+    border-radius: 14px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    margin: 6px;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(59,130,246,0.8);
+
+}
+
+button:active {
+
+    transform: scale(0.95);
+
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input {
+
+    width: 350px;
+
+    max-width: 90%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    margin: 10px;
+
+    font-size: 17px;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+input:focus {
+
+    outline: none;
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 15px rgba(59,130,246,0.8);
+
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+
+    text-decoration: none;
+
+}
+
+/* =========================
+   LEVEL LIST
+========================= */
+
+#level-list {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: left;
+
+}
+
+.level-card {
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    animation: cardAppear 0.5s ease;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.level-card:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.15);
+
+}
+
+.level-card h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.level-card p {
+
+    color: #dbeafe;
+
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+#search {
+
+    width: 450px;
+
+    max-width: 90%;
+
+    margin-bottom: 30px;
+
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+#loader {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3a8a
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+
+    transition: opacity 0.8s;
+}
+
+#loader.hidden {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+.spinner {
+
+    width: 90px;
+    height: 90px;
+
+    border: 8px solid rgba(255,255,255,0.2);
+
+    border-top: 8px solid white;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+
+}
+
+#loader h2 {
+
+    margin-top: 25px;
+
+    animation: pulse 1.5s infinite;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+
+        font-size: 32px;
+
+    }
+
+    button {
+
+        width: 90%;
+
+    }
+
+}
+/* ===== BETTER DARK MODE ===== */
+
+body.dark-mode {
+    background: linear-gradient(-45deg,
+        #050505,
+        #101010,
+        #181818,
+        #050505);
+
+    background-size: 400% 400%;
+
+    color: white;
+}
+
+body.dark-mode .level-card {
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid #333;
+}
+
+body.dark-mode button {
+    background: #222;
+    color: white;
+}
+
+body.dark-mode button:hover {
+    background: #333;
+}
+
+body.dark-mode input {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #444;
+}
+
+body.dark-mode input::placeholder {
+    color: #999;
+}
+
+body.dark-mode a {
+    color: #66b3ff;
+}
